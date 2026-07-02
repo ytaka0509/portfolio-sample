@@ -9,349 +9,235 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;500;600;700;800&family=Noto+Sans+JP:wght@300;400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
   <style>
     * { font-family: 'Noto Sans JP', 'Inter', sans-serif; }
+    .serif { font-family: 'Shippori Mincho', 'Noto Sans JP', serif; }
 
-    .g-text {
-      background: linear-gradient(135deg, #0f766e 0%, #0284c7 55%, #4f46e5 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
+    .hero-hl {
+      font-size: clamp(2.1rem, 4.6vw, 4rem);
+      line-height: 1.35;
+      letter-spacing: 0.01em;
     }
 
-    .g-border {
-      background: linear-gradient(135deg, #0f766e, #0284c7, #4f46e5);
-      padding: 1.5px;
-      border-radius: 1.5rem;
+    .idx-num {
+      font-family: 'Shippori Mincho', serif;
+      font-size: 0.95rem;
+      color: #a8a29e;
     }
 
-    .card-lift {
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-    .card-lift:hover {
-      transform: translateY(-6px);
-      box-shadow: 0 24px 60px rgba(0,0,0,0.09), 0 6px 20px rgba(0,0,0,0.04);
-    }
+    .card-lift { transition: border-color 0.3s ease, transform 0.3s ease; }
+    .card-lift:hover { transform: translateY(-3px); }
 
-    .thumb { transition: transform 0.6s ease; }
-    .portfolio-card:hover .thumb { transform: scale(1.05); }
+    .thumb { transition: transform 0.7s ease, filter 0.7s ease; filter: grayscale(45%); }
+    .portfolio-card:hover .thumb { transform: scale(1.03); filter: grayscale(0%); }
 
-    .port-overlay {
-      opacity: 0;
-      transition: opacity 0.35s ease;
-    }
+    .port-overlay { opacity: 0; transition: opacity 0.35s ease; }
     .portfolio-card:hover .port-overlay { opacity: 1; }
-
-    @keyframes marquee {
-      from { transform: translateX(0); }
-      to   { transform: translateX(-50%); }
-    }
-    .marquee-track {
-      display: flex;
-      animation: marquee 28s linear infinite;
-      width: max-content;
-    }
-    .marquee-track:hover { animation-play-state: paused; }
 
     .reveal {
       opacity: 0;
-      transform: translateY(28px);
-      transition: opacity 0.7s ease, transform 0.7s ease;
+      transform: translateY(20px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
     }
-    .reveal.vis {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    @keyframes drift {
-      0%,100% { transform: translate(0,0) scale(1); }
-      33%      { transform: translate(50px,-30px) scale(1.08); }
-      66%      { transform: translate(-30px,18px) scale(0.94); }
-    }
-    .orb  { animation: drift 14s ease-in-out infinite; }
-    .orb2 { animation: drift 20s ease-in-out infinite reverse; }
-
-    @keyframes pulse-dot {
-      0%,100% { opacity: 0.4; }
-      50%      { opacity: 1; }
-    }
-    .pdot { animation: pulse-dot 2.2s ease-in-out infinite; }
-
-    .svc-num {
-      font-size: clamp(6rem, 10vw, 9rem);
-      font-weight: 900;
-      line-height: 1;
-      color: #f0ece8;
-      user-select: none;
-      pointer-events: none;
-    }
-
-    .hero-hl {
-      font-size: clamp(1.9rem, 5.5vw, 5.5rem);
-      font-weight: 900;
-      line-height: 1.1;
-      letter-spacing: -0.03em;
-    }
+    .reveal.vis { opacity: 1; transform: translateY(0); }
 
     .section-label {
       display: flex;
       align-items: center;
-      justify-content: center;
-      gap: 1rem;
-      margin-bottom: 1.5rem;
+      gap: 0.9rem;
+      margin-bottom: 1.25rem;
     }
-    .section-label-line {
-      height: 1px;
-      width: 3rem;
-      background: linear-gradient(90deg, transparent, #14b8a6);
-    }
-    .section-label-line-r {
-      height: 1px;
-      width: 3rem;
-      background: linear-gradient(90deg, #14b8a6, transparent);
-    }
+    .section-label-line { height: 1px; width: 2.25rem; background: #1c1917; }
 
-    .divider {
-      height: 1px;
-      background: linear-gradient(90deg, transparent, rgba(15,118,110,0.15), transparent);
+    .divider { height: 1px; background: #e7e5e4; }
+
+    .btn-ink {
+      background: #1c1917;
+      color: #fafaf9;
     }
+    .btn-ink:hover { background: #292524; }
 
     ::-webkit-scrollbar { width: 4px; }
     ::-webkit-scrollbar-track { background: #fafaf9; }
-    ::-webkit-scrollbar-thumb { background: #d6d3d1; border-radius: 2px; }
-    ::-webkit-scrollbar-thumb:hover { background: #14b8a6; }
+    ::-webkit-scrollbar-thumb { background: #d6d3d1; }
+    ::-webkit-scrollbar-thumb:hover { background: #78716c; }
   </style>
 </head>
-<body class="bg-stone-50 text-stone-900 antialiased overflow-x-hidden">
+<body class="bg-white text-stone-900 antialiased overflow-x-hidden">
 
   <!-- NAV -->
-  <nav class="fixed top-0 inset-x-0 z-50 bg-white/75 backdrop-blur-2xl border-b border-stone-200/80">
+  <nav class="fixed top-0 inset-x-0 z-50 bg-white/90 backdrop-blur border-b border-stone-200">
     <div class="max-w-6xl mx-auto px-6 h-18 flex items-center justify-between" style="height:4.5rem;">
-      <a href="#" class="font-black text-lg tracking-tight">
-        <span class="g-text">W</span><span class="text-stone-900">EB制作</span>
+      <a href="#" class="serif font-semibold text-lg tracking-wide text-stone-900">
+        WEB制作 <span class="text-stone-400 text-sm">Portfolio</span>
       </a>
-      <div class="hidden sm:flex items-center gap-8 text-sm font-medium text-stone-500">
-        <a href="#services" class="hover:text-teal-600 transition-colors">できること</a>
-        <a href="#pricing"  class="hover:text-teal-600 transition-colors">料金</a>
-        <a href="#portfolio" class="hover:text-teal-600 transition-colors">実績</a>
-        <a href="#process"  class="hover:text-teal-600 transition-colors">流れ</a>
+      <div class="hidden sm:flex items-center gap-9 text-sm text-stone-500">
+        <a href="#services" class="hover:text-stone-900 transition-colors">できること</a>
+        <a href="#pricing"  class="hover:text-stone-900 transition-colors">料金</a>
+        <a href="#portfolio" class="hover:text-stone-900 transition-colors">実績</a>
+        <a href="#process"  class="hover:text-stone-900 transition-colors">流れ</a>
         <a href="#contact"
-           class="ml-3 px-6 py-2.5 bg-teal-500 text-zinc-950 rounded-full font-black hover:bg-teal-400 transition-colors text-xs shadow-md shadow-teal-500/20 tracking-wide">
+           class="ml-2 px-6 py-2.5 btn-ink font-medium text-xs tracking-wide transition-colors">
           無料相談
         </a>
       </div>
-      <button class="sm:hidden text-stone-500 hover:text-teal-600 transition-colors"
+      <button class="sm:hidden text-stone-500 hover:text-stone-900 transition-colors"
               onclick="document.getElementById('mob').classList.toggle('hidden')"
               aria-label="メニューを開く">
         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 6h16M4 12h16M4 18h16"/>
         </svg>
       </button>
     </div>
-    <div id="mob" class="hidden sm:hidden bg-white/98 border-t border-stone-100">
+    <div id="mob" class="hidden sm:hidden bg-white border-t border-stone-200">
       <div class="flex flex-col p-5 gap-1 text-sm">
-        <a href="#services"  class="py-3 px-4 text-stone-600 hover:text-teal-600 hover:bg-stone-50 rounded-xl transition-colors" onclick="document.getElementById('mob').classList.add('hidden')">できること</a>
-        <a href="#pricing"   class="py-3 px-4 text-stone-600 hover:text-teal-600 hover:bg-stone-50 rounded-xl transition-colors" onclick="document.getElementById('mob').classList.add('hidden')">料金目安</a>
-        <a href="#portfolio" class="py-3 px-4 text-stone-600 hover:text-teal-600 hover:bg-stone-50 rounded-xl transition-colors" onclick="document.getElementById('mob').classList.add('hidden')">制作実績</a>
-        <a href="#process"   class="py-3 px-4 text-stone-600 hover:text-teal-600 hover:bg-stone-50 rounded-xl transition-colors" onclick="document.getElementById('mob').classList.add('hidden')">制作の流れ</a>
-        <a href="#contact"   class="mt-3 py-3 px-4 bg-teal-500 text-zinc-950 rounded-xl font-black text-center hover:bg-teal-400 transition-colors" onclick="document.getElementById('mob').classList.add('hidden')">無料相談はこちら</a>
+        <a href="#services"  class="py-3 px-4 text-stone-600 hover:text-stone-900 hover:bg-stone-50 transition-colors" onclick="document.getElementById('mob').classList.add('hidden')">できること</a>
+        <a href="#pricing"   class="py-3 px-4 text-stone-600 hover:text-stone-900 hover:bg-stone-50 transition-colors" onclick="document.getElementById('mob').classList.add('hidden')">料金目安</a>
+        <a href="#portfolio" class="py-3 px-4 text-stone-600 hover:text-stone-900 hover:bg-stone-50 transition-colors" onclick="document.getElementById('mob').classList.add('hidden')">制作実績</a>
+        <a href="#process"   class="py-3 px-4 text-stone-600 hover:text-stone-900 hover:bg-stone-50 transition-colors" onclick="document.getElementById('mob').classList.add('hidden')">制作の流れ</a>
+        <a href="#contact"   class="mt-3 py-3 px-4 btn-ink text-center font-medium transition-colors" onclick="document.getElementById('mob').classList.add('hidden')">無料相談はこちら</a>
       </div>
     </div>
   </nav>
 
   <!-- HERO -->
-  <section class="relative min-h-screen flex flex-col items-center justify-center text-center px-6 overflow-hidden" style="padding-top:4.5rem;">
-    <div class="orb  absolute top-1/4  left-[8%]   w-[600px] h-[600px] rounded-full pointer-events-none"
-         style="background: radial-gradient(circle, rgba(20,184,166,0.12) 0%, transparent 68%)"></div>
-    <div class="orb2 absolute bottom-1/4 right-[6%]  w-[480px] h-[480px] rounded-full pointer-events-none"
-         style="background: radial-gradient(circle, rgba(99,102,241,0.09) 0%, transparent 68%)"></div>
-    <div class="absolute inset-0 pointer-events-none"
-         style="background-image:radial-gradient(circle, rgba(15,118,110,0.06) 1px, transparent 1px);background-size:32px 32px;"></div>
-
-    <div class="relative max-w-5xl mx-auto w-full">
-      <div class="inline-flex items-center gap-3 mb-12 px-5 py-2.5 bg-white border border-stone-200 rounded-full text-teal-700 text-sm font-semibold shadow-sm">
-        <span class="w-2 h-2 bg-teal-500 rounded-full pdot"></span>
-        Web制作受付中
-      </div>
-
-      <h1 class="hero-hl mb-9">
-        <span class="g-text">LP制作</span><span class="text-stone-900">と業務システム、</span><br />
-        <span class="g-text">まとめて</span><span class="text-stone-900">作ります。</span>
-      </h1>
-
-      <p class="text-stone-500 text-lg sm:text-xl max-w-xl mx-auto mb-14 leading-relaxed">
-        集客できるデザインから予約システム・料金シミュレーター・フォーム連携まで。<br class="hidden sm:block" />
-        デザインとシステムをワンストップで担当します。
-      </p>
-
-      <div class="flex flex-col sm:flex-row gap-4 justify-center mb-20">
-        <a href="#contact"
-           class="inline-flex items-center justify-center gap-2.5 px-10 py-5 bg-teal-500 text-zinc-950 font-black rounded-full hover:bg-teal-400 transition-colors shadow-xl shadow-teal-500/25 text-base">
-          無料相談はこちら
-          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
-          </svg>
-        </a>
-        <a href="#portfolio"
-           class="inline-flex items-center justify-center gap-2.5 px-10 py-5 bg-white border border-stone-200 text-stone-700 font-semibold rounded-full hover:bg-stone-50 hover:border-stone-300 transition-colors text-base shadow-sm">
-          制作実績を見る
-          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
-          </svg>
-        </a>
-      </div>
-
-      <!-- Stats bar -->
-      <div class="mb-4 flex items-center gap-4 text-stone-400">
-        <div class="flex-1 h-px bg-stone-200"></div>
-        <span class="text-xs tracking-[0.2em] font-medium uppercase">実績</span>
-        <div class="flex-1 h-px bg-stone-200"></div>
-      </div>
-      <div class="grid grid-cols-2 sm:grid-cols-4 gap-px bg-stone-200 border border-stone-200 rounded-3xl overflow-hidden shadow-sm">
-        <div class="bg-white py-9 text-center">
-          <div class="text-3xl sm:text-4xl font-black g-text mb-1">6+</div>
-          <div class="text-stone-400 text-xs tracking-wider">制作実績</div>
+  <section class="relative px-6 border-b border-stone-200" style="padding-top:9.5rem;padding-bottom:6rem;">
+    <div class="max-w-6xl mx-auto grid lg:grid-cols-12 gap-16 items-end">
+      <div class="lg:col-span-8 reveal">
+        <div class="flex items-center gap-2.5 mb-9 text-stone-400 text-xs tracking-[0.25em] uppercase">
+          <span class="w-6 h-px bg-stone-400"></span>
+          Web Design &amp; Development
         </div>
-        <div class="bg-white py-9 text-center">
-          <div class="text-3xl sm:text-4xl font-black g-text mb-1">4</div>
-          <div class="text-stone-400 text-xs tracking-wider">対応機能</div>
-        </div>
-        <div class="bg-white py-9 text-center">
-          <div class="text-3xl sm:text-4xl font-black g-text mb-1">1ヶ月</div>
-          <div class="text-stone-400 text-xs tracking-wider">納品後サポート</div>
-        </div>
-        <div class="bg-white py-9 text-center">
-          <div class="text-3xl sm:text-4xl font-black g-text mb-1">¥5万〜</div>
-          <div class="text-stone-400 text-xs tracking-wider">スタート価格</div>
+        <h1 class="serif hero-hl text-stone-900 mb-10">
+          LP制作と業務システム、<br />
+          <span class="italic">まとめて</span>設計・実装します。
+        </h1>
+        <p class="text-stone-500 text-base sm:text-lg max-w-lg leading-loose mb-12">
+          集客できるデザインから予約システム・料金シミュレーター・フォーム連携まで。<br class="hidden sm:block" />
+          デザインとシステムをワンストップで担当します。
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4">
+          <a href="#contact"
+             class="inline-flex items-center justify-center gap-2.5 px-9 py-4 btn-ink font-medium transition-colors text-sm">
+            無料相談はこちら
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+            </svg>
+          </a>
+          <a href="#portfolio"
+             class="inline-flex items-center justify-center gap-2.5 px-9 py-4 border border-stone-300 text-stone-700 font-medium hover:border-stone-900 hover:text-stone-900 transition-colors text-sm">
+            制作実績を見る
+          </a>
         </div>
       </div>
-    </div>
 
-    <div class="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-stone-400 text-xs">
-      <span class="tracking-[0.2em] font-medium">SCROLL</span>
-      <div class="w-px h-12 bg-gradient-to-b from-stone-400 to-transparent"></div>
+      <div class="lg:col-span-4 reveal">
+        <dl class="grid grid-cols-2 gap-y-9 gap-x-6 border-t border-stone-200 pt-8">
+          <div>
+            <dt class="text-stone-400 text-xs tracking-wider mb-2">制作実績</dt>
+            <dd class="serif text-3xl text-stone-900">6+</dd>
+          </div>
+          <div>
+            <dt class="text-stone-400 text-xs tracking-wider mb-2">対応機能</dt>
+            <dd class="serif text-3xl text-stone-900">4</dd>
+          </div>
+          <div>
+            <dt class="text-stone-400 text-xs tracking-wider mb-2">納品後サポート</dt>
+            <dd class="serif text-3xl text-stone-900">1ヶ月</dd>
+          </div>
+          <div>
+            <dt class="text-stone-400 text-xs tracking-wider mb-2">スタート価格</dt>
+            <dd class="serif text-3xl text-stone-900">¥5万〜</dd>
+          </div>
+        </dl>
+      </div>
     </div>
   </section>
 
-  <!-- MARQUEE -->
-  <div class="py-6 border-y border-stone-200 bg-white overflow-hidden select-none">
-    <div class="marquee-track text-stone-400 text-sm font-medium whitespace-nowrap">
-      <span class="inline-flex items-center gap-10 pr-10">
-        <span>HTML / CSS</span><span class="text-teal-400">◆</span>
-        <span>Tailwind CSS</span><span class="text-teal-400">◆</span>
-        <span>JavaScript</span><span class="text-teal-400">◆</span>
-        <span>レスポンシブデザイン</span><span class="text-teal-400">◆</span>
-        <span>Calendly 連携</span><span class="text-teal-400">◆</span>
-        <span>Formspree 連携</span><span class="text-teal-400">◆</span>
-        <span>料金シミュレーター</span><span class="text-teal-400">◆</span>
-        <span>GitHub Pages</span><span class="text-teal-400">◆</span>
-        <span>SEO 対応</span><span class="text-teal-400">◆</span>
-        <span>Google Fonts</span><span class="text-teal-400">◆</span>
-      </span>
-      <span class="inline-flex items-center gap-10 pr-10">
-        <span>HTML / CSS</span><span class="text-teal-400">◆</span>
-        <span>Tailwind CSS</span><span class="text-teal-400">◆</span>
-        <span>JavaScript</span><span class="text-teal-400">◆</span>
-        <span>レスポンシブデザイン</span><span class="text-teal-400">◆</span>
-        <span>Calendly 連携</span><span class="text-teal-400">◆</span>
-        <span>Formspree 連携</span><span class="text-teal-400">◆</span>
-        <span>料金シミュレーター</span><span class="text-teal-400">◆</span>
-        <span>GitHub Pages</span><span class="text-teal-400">◆</span>
-        <span>SEO 対応</span><span class="text-teal-400">◆</span>
-        <span>Google Fonts</span><span class="text-teal-400">◆</span>
-      </span>
-    </div>
-  </div>
-
   <!-- SERVICES -->
-  <section id="services" class="py-32 px-6">
+  <section id="services" class="py-28 px-6">
     <div class="max-w-5xl mx-auto">
-      <div class="text-center mb-24 reveal">
+      <div class="mb-20 reveal">
         <div class="section-label">
           <div class="section-label-line"></div>
-          <p class="text-teal-600 text-xs font-black tracking-[0.3em] uppercase">Services</p>
-          <div class="section-label-line-r"></div>
+          <p class="text-stone-400 text-xs tracking-[0.3em] uppercase">Services</p>
         </div>
-        <h2 class="text-4xl sm:text-5xl font-black mb-5 tracking-tight">できること</h2>
-        <p class="text-stone-500 text-lg max-w-md mx-auto leading-relaxed">LP制作からシステム開発まで。<br class="hidden sm:block"/>必要なものをワンストップで対応します。</p>
+        <h2 class="serif text-3xl sm:text-4xl mb-4">できること</h2>
+        <p class="text-stone-500 max-w-md leading-relaxed">LP制作からシステム開発まで。必要なものをワンストップで対応します。</p>
       </div>
 
-      <div class="grid sm:grid-cols-2 gap-6">
+      <div class="border-t border-stone-200">
 
         <!-- 01 LP制作 -->
-        <div class="card-lift reveal group relative bg-white border border-stone-200 rounded-3xl p-10 overflow-hidden shadow-sm">
-          <div class="absolute top-0 right-0 svc-num pr-6 pt-2 select-none">01</div>
-          <div class="relative">
-            <div class="w-16 h-16 bg-teal-50 border border-teal-200 rounded-2xl flex items-center justify-center mb-8 group-hover:bg-teal-100 transition-colors">
-              <svg class="w-8 h-8 text-teal-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
-              </svg>
-            </div>
-            <h3 class="text-2xl font-black mb-4 tracking-tight">LP制作</h3>
-            <p class="text-stone-500 leading-relaxed mb-7">美容院・飲食店・医療など多業種対応。PC/SP両対応のレスポンシブデザインで、ターゲットに刺さる訴求力の高いLPを制作します。</p>
+        <div class="card-lift reveal group border-b border-stone-200 py-10 grid sm:grid-cols-12 gap-6 sm:gap-10">
+          <div class="sm:col-span-2">
+            <span class="idx-num">01</span>
+          </div>
+          <div class="sm:col-span-3">
+            <h3 class="serif text-xl text-stone-900">LP制作</h3>
+          </div>
+          <div class="sm:col-span-7">
+            <p class="text-stone-500 leading-relaxed mb-5">美容院・飲食店・医療など多業種対応。PC/SP両対応のレスポンシブデザインで、ターゲットに刺さる訴求力の高いLPを制作します。</p>
             <div class="flex flex-wrap gap-2">
-              <span class="text-xs bg-stone-100 text-stone-600 rounded-full px-3.5 py-1.5 font-medium">HTML/CSS</span>
-              <span class="text-xs bg-stone-100 text-stone-600 rounded-full px-3.5 py-1.5 font-medium">Tailwind</span>
-              <span class="text-xs bg-stone-100 text-stone-600 rounded-full px-3.5 py-1.5 font-medium">レスポンシブ</span>
-              <span class="text-xs bg-stone-100 text-stone-600 rounded-full px-3.5 py-1.5 font-medium">SEO対応</span>
+              <span class="text-xs border border-stone-200 text-stone-500 px-3 py-1">HTML/CSS</span>
+              <span class="text-xs border border-stone-200 text-stone-500 px-3 py-1">Tailwind</span>
+              <span class="text-xs border border-stone-200 text-stone-500 px-3 py-1">レスポンシブ</span>
+              <span class="text-xs border border-stone-200 text-stone-500 px-3 py-1">SEO対応</span>
             </div>
           </div>
         </div>
 
         <!-- 02 予約システム -->
-        <div class="card-lift reveal group relative bg-white border border-stone-200 rounded-3xl p-10 overflow-hidden shadow-sm">
-          <div class="absolute top-0 right-0 svc-num pr-6 pt-2 select-none">02</div>
-          <div class="relative">
-            <div class="w-16 h-16 bg-sky-50 border border-sky-200 rounded-2xl flex items-center justify-center mb-8 group-hover:bg-sky-100 transition-colors">
-              <svg class="w-8 h-8 text-sky-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
-              </svg>
-            </div>
-            <h3 class="text-2xl font-black mb-4 tracking-tight">予約システム構築</h3>
-            <p class="text-stone-500 leading-relaxed mb-7">CalendlyなどをLP内に組み込み、電話対応ゼロで24時間予約受付が可能に。顧客の離脱を防ぎ、CV率を高めます。</p>
+        <div class="card-lift reveal group border-b border-stone-200 py-10 grid sm:grid-cols-12 gap-6 sm:gap-10">
+          <div class="sm:col-span-2">
+            <span class="idx-num">02</span>
+          </div>
+          <div class="sm:col-span-3">
+            <h3 class="serif text-xl text-stone-900">予約システム構築</h3>
+          </div>
+          <div class="sm:col-span-7">
+            <p class="text-stone-500 leading-relaxed mb-5">CalendlyなどをLP内に組み込み、電話対応ゼロで24時間予約受付が可能に。顧客の離脱を防ぎ、CV率を高めます。</p>
             <div class="flex flex-wrap gap-2">
-              <span class="text-xs bg-stone-100 text-stone-600 rounded-full px-3.5 py-1.5 font-medium">Calendly連携</span>
-              <span class="text-xs bg-stone-100 text-stone-600 rounded-full px-3.5 py-1.5 font-medium">24時間受付</span>
-              <span class="text-xs bg-stone-100 text-stone-600 rounded-full px-3.5 py-1.5 font-medium">埋め込み対応</span>
+              <span class="text-xs border border-stone-200 text-stone-500 px-3 py-1">Calendly連携</span>
+              <span class="text-xs border border-stone-200 text-stone-500 px-3 py-1">24時間受付</span>
+              <span class="text-xs border border-stone-200 text-stone-500 px-3 py-1">埋め込み対応</span>
             </div>
           </div>
         </div>
 
         <!-- 03 料金シミュレーター -->
-        <div class="card-lift reveal group relative bg-white border border-stone-200 rounded-3xl p-10 overflow-hidden shadow-sm">
-          <div class="absolute top-0 right-0 svc-num pr-6 pt-2 select-none">03</div>
-          <div class="relative">
-            <div class="w-16 h-16 bg-violet-50 border border-violet-200 rounded-2xl flex items-center justify-center mb-8 group-hover:bg-violet-100 transition-colors">
-              <svg class="w-8 h-8 text-violet-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z"/>
-              </svg>
-            </div>
-            <h3 class="text-2xl font-black mb-4 tracking-tight">料金シミュレーター</h3>
-            <p class="text-stone-500 leading-relaxed mb-7">プランや条件を選ぶと料金が自動計算されるインタラクティブなツール。価格の透明性を高め、問い合わせのハードルを下げます。</p>
+        <div class="card-lift reveal group border-b border-stone-200 py-10 grid sm:grid-cols-12 gap-6 sm:gap-10">
+          <div class="sm:col-span-2">
+            <span class="idx-num">03</span>
+          </div>
+          <div class="sm:col-span-3">
+            <h3 class="serif text-xl text-stone-900">料金シミュレーター</h3>
+          </div>
+          <div class="sm:col-span-7">
+            <p class="text-stone-500 leading-relaxed mb-5">プランや条件を選ぶと料金が自動計算されるインタラクティブなツール。価格の透明性を高め、問い合わせのハードルを下げます。</p>
             <div class="flex flex-wrap gap-2">
-              <span class="text-xs bg-stone-100 text-stone-600 rounded-full px-3.5 py-1.5 font-medium">JavaScript</span>
-              <span class="text-xs bg-stone-100 text-stone-600 rounded-full px-3.5 py-1.5 font-medium">リアルタイム計算</span>
-              <span class="text-xs bg-stone-100 text-stone-600 rounded-full px-3.5 py-1.5 font-medium">CV率向上</span>
+              <span class="text-xs border border-stone-200 text-stone-500 px-3 py-1">JavaScript</span>
+              <span class="text-xs border border-stone-200 text-stone-500 px-3 py-1">リアルタイム計算</span>
+              <span class="text-xs border border-stone-200 text-stone-500 px-3 py-1">CV率向上</span>
             </div>
           </div>
         </div>
 
         <!-- 04 フォーム構築 -->
-        <div class="card-lift reveal group relative bg-white border border-stone-200 rounded-3xl p-10 overflow-hidden shadow-sm">
-          <div class="absolute top-0 right-0 svc-num pr-6 pt-2 select-none">04</div>
-          <div class="relative">
-            <div class="w-16 h-16 bg-amber-50 border border-amber-200 rounded-2xl flex items-center justify-center mb-8 group-hover:bg-amber-100 transition-colors">
-              <svg class="w-8 h-8 text-amber-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
-              </svg>
-            </div>
-            <h3 class="text-2xl font-black mb-4 tracking-tight">フォーム構築</h3>
-            <p class="text-stone-500 leading-relaxed mb-7">Formspree等との連携でLP内に問い合わせ・予約フォームを実装。送信後の自動返信メールや即時通知にも対応します。</p>
+        <div class="card-lift reveal group py-10 grid sm:grid-cols-12 gap-6 sm:gap-10">
+          <div class="sm:col-span-2">
+            <span class="idx-num">04</span>
+          </div>
+          <div class="sm:col-span-3">
+            <h3 class="serif text-xl text-stone-900">フォーム構築</h3>
+          </div>
+          <div class="sm:col-span-7">
+            <p class="text-stone-500 leading-relaxed mb-5">Formspree等との連携でLP内に問い合わせ・予約フォームを実装。送信後の自動返信メールや即時通知にも対応します。</p>
             <div class="flex flex-wrap gap-2">
-              <span class="text-xs bg-stone-100 text-stone-600 rounded-full px-3.5 py-1.5 font-medium">Formspree連携</span>
-              <span class="text-xs bg-stone-100 text-stone-600 rounded-full px-3.5 py-1.5 font-medium">自動返信</span>
-              <span class="text-xs bg-stone-100 text-stone-600 rounded-full px-3.5 py-1.5 font-medium">メール通知</span>
+              <span class="text-xs border border-stone-200 text-stone-500 px-3 py-1">Formspree連携</span>
+              <span class="text-xs border border-stone-200 text-stone-500 px-3 py-1">自動返信</span>
+              <span class="text-xs border border-stone-200 text-stone-500 px-3 py-1">メール通知</span>
             </div>
           </div>
         </div>
@@ -363,138 +249,133 @@
   <div class="divider"></div>
 
   <!-- PRICING -->
-  <section id="pricing" class="py-32 px-6 bg-stone-100/40">
+  <section id="pricing" class="py-28 px-6 bg-stone-50">
     <div class="max-w-5xl mx-auto">
-      <div class="text-center mb-24 reveal">
+      <div class="mb-20 reveal">
         <div class="section-label">
           <div class="section-label-line"></div>
-          <p class="text-teal-600 text-xs font-black tracking-[0.3em] uppercase">Pricing</p>
-          <div class="section-label-line-r"></div>
+          <p class="text-stone-400 text-xs tracking-[0.3em] uppercase">Pricing</p>
         </div>
-        <h2 class="text-4xl sm:text-5xl font-black mb-5 tracking-tight">料金目安</h2>
-        <p class="text-stone-500 text-lg max-w-md mx-auto leading-relaxed">すべて税込み表示。要件によって変動します。<br class="hidden sm:block"/>まずはご相談ください。</p>
+        <h2 class="serif text-3xl sm:text-4xl mb-4">料金目安</h2>
+        <p class="text-stone-500 max-w-md leading-relaxed">すべて税込み表示。要件によって変動します。まずはご相談ください。</p>
       </div>
 
-      <div class="grid sm:grid-cols-3 gap-6 items-start">
+      <div class="grid sm:grid-cols-3 gap-px bg-stone-200 border border-stone-200">
 
         <!-- LP基本 -->
-        <div class="card-lift reveal bg-white border border-stone-200 rounded-3xl p-10 shadow-sm">
-          <div class="text-stone-400 text-sm font-semibold mb-4 tracking-wide">LP基本プラン</div>
+        <div class="reveal bg-white p-10 flex flex-col">
+          <div class="text-stone-400 text-sm mb-5">LP基本プラン</div>
           <div class="flex items-end gap-1 mb-1">
-            <span class="text-4xl font-black text-stone-900 tracking-tight">¥50,000</span>
-            <span class="text-stone-400 text-xl mb-1">〜</span>
+            <span class="serif text-3xl text-stone-900">¥50,000</span>
+            <span class="text-stone-400 text-lg mb-0.5">〜</span>
           </div>
-          <div class="text-stone-400 text-xs mb-9">税込み / 要件により変動</div>
+          <div class="text-stone-400 text-xs mb-8">税込み / 要件により変動</div>
           <div class="h-px bg-stone-100 mb-8"></div>
-          <ul class="space-y-5 text-sm text-stone-600 mb-10">
+          <ul class="space-y-4 text-sm text-stone-600 mb-10 flex-1">
             <li class="flex items-center gap-3">
-              <svg class="w-4 h-4 text-teal-500 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg>
+              <svg class="w-3.5 h-3.5 text-stone-900 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M5 13l4 4L19 7"/></svg>
               1ページ完結LP
             </li>
             <li class="flex items-center gap-3">
-              <svg class="w-4 h-4 text-teal-500 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg>
+              <svg class="w-3.5 h-3.5 text-stone-900 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M5 13l4 4L19 7"/></svg>
               PC・スマホ両対応
             </li>
             <li class="flex items-center gap-3">
-              <svg class="w-4 h-4 text-teal-500 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg>
+              <svg class="w-3.5 h-3.5 text-stone-900 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M5 13l4 4L19 7"/></svg>
               お問い合わせフォーム
             </li>
             <li class="flex items-center gap-3">
-              <svg class="w-4 h-4 text-teal-500 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg>
+              <svg class="w-3.5 h-3.5 text-stone-900 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M5 13l4 4L19 7"/></svg>
               納品後1ヶ月サポート
             </li>
             <li class="flex items-center gap-3 text-stone-300">
-              <svg class="w-4 h-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+              <svg class="w-3.5 h-3.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M6 18L18 6M6 6l12 12"/></svg>
               システム機能
             </li>
           </ul>
-          <a href="#contact" class="block text-center py-3.5 border border-stone-300 text-stone-700 rounded-full text-sm font-semibold hover:border-teal-500 hover:text-teal-600 transition-colors">
+          <a href="#contact" class="block text-center py-3.5 border border-stone-300 text-stone-700 text-sm hover:border-stone-900 hover:text-stone-900 transition-colors">
             相談する
           </a>
         </div>
 
         <!-- LP＋機能 Featured -->
-        <div class="reveal relative sm:-mt-5">
-          <div class="g-border shadow-2xl shadow-teal-500/10">
-            <div class="bg-white rounded-[1.4rem] p-10 relative">
-              <div class="absolute -top-5 left-1/2 -translate-x-1/2">
-                <span class="px-6 py-2 bg-teal-500 text-zinc-950 text-xs font-black rounded-full whitespace-nowrap shadow-lg shadow-teal-500/25 tracking-wide">人気プラン</span>
-              </div>
-              <div class="text-teal-600 text-sm font-semibold mb-4 mt-2 tracking-wide">LP＋機能プラン</div>
-              <div class="flex items-end gap-1 mb-1">
-                <span class="text-4xl font-black text-stone-900 tracking-tight">¥100,000</span>
-                <span class="text-stone-400 text-xl mb-1">〜</span>
-              </div>
-              <div class="text-stone-400 text-xs mb-9">税込み / 要件により変動</div>
-              <div class="h-px bg-stone-100 mb-8"></div>
-              <ul class="space-y-5 text-sm text-stone-600 mb-10">
-                <li class="flex items-center gap-3">
-                  <svg class="w-4 h-4 text-teal-500 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg>
-                  基本プランの全内容
-                </li>
-                <li class="flex items-center gap-3">
-                  <svg class="w-4 h-4 text-teal-500 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg>
-                  予約システム組み込み
-                </li>
-                <li class="flex items-center gap-3">
-                  <svg class="w-4 h-4 text-teal-500 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg>
-                  料金シミュレーター
-                </li>
-                <li class="flex items-center gap-3">
-                  <svg class="w-4 h-4 text-teal-500 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg>
-                  自動メール通知フォーム
-                </li>
-                <li class="flex items-center gap-3">
-                  <svg class="w-4 h-4 text-teal-500 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg>
-                  納品後1ヶ月サポート
-                </li>
-              </ul>
-              <a href="#contact" class="block text-center py-3.5 bg-teal-500 text-zinc-950 rounded-full text-sm font-black hover:bg-teal-400 transition-colors shadow-lg shadow-teal-500/20">
-                相談する
-              </a>
-            </div>
+        <div class="reveal bg-white p-10 flex flex-col border-2 border-stone-900 -my-px">
+          <div class="text-stone-900 text-sm mb-5 flex items-center justify-between">
+            LP＋機能プラン
+            <span class="text-xs border border-stone-900 px-2.5 py-1 tracking-wide">人気</span>
           </div>
+          <div class="flex items-end gap-1 mb-1">
+            <span class="serif text-3xl text-stone-900">¥100,000</span>
+            <span class="text-stone-400 text-lg mb-0.5">〜</span>
+          </div>
+          <div class="text-stone-400 text-xs mb-8">税込み / 要件により変動</div>
+          <div class="h-px bg-stone-100 mb-8"></div>
+          <ul class="space-y-4 text-sm text-stone-600 mb-10 flex-1">
+            <li class="flex items-center gap-3">
+              <svg class="w-3.5 h-3.5 text-stone-900 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M5 13l4 4L19 7"/></svg>
+              基本プランの全内容
+            </li>
+            <li class="flex items-center gap-3">
+              <svg class="w-3.5 h-3.5 text-stone-900 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M5 13l4 4L19 7"/></svg>
+              予約システム組み込み
+            </li>
+            <li class="flex items-center gap-3">
+              <svg class="w-3.5 h-3.5 text-stone-900 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M5 13l4 4L19 7"/></svg>
+              料金シミュレーター
+            </li>
+            <li class="flex items-center gap-3">
+              <svg class="w-3.5 h-3.5 text-stone-900 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M5 13l4 4L19 7"/></svg>
+              自動メール通知フォーム
+            </li>
+            <li class="flex items-center gap-3">
+              <svg class="w-3.5 h-3.5 text-stone-900 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M5 13l4 4L19 7"/></svg>
+              納品後1ヶ月サポート
+            </li>
+          </ul>
+          <a href="#contact" class="block text-center py-3.5 btn-ink text-sm transition-colors">
+            相談する
+          </a>
         </div>
 
         <!-- フルカスタム -->
-        <div class="card-lift reveal bg-white border border-stone-200 rounded-3xl p-10 shadow-sm">
-          <div class="text-stone-400 text-sm font-semibold mb-4 tracking-wide">フルカスタムプラン</div>
+        <div class="reveal bg-white p-10 flex flex-col">
+          <div class="text-stone-400 text-sm mb-5">フルカスタムプラン</div>
           <div class="flex items-end gap-1 mb-1">
-            <span class="text-4xl font-black text-stone-900 tracking-tight">要相談</span>
+            <span class="serif text-3xl text-stone-900">要相談</span>
           </div>
-          <div class="text-stone-400 text-xs mb-9">要件ヒアリング後にお見積り</div>
+          <div class="text-stone-400 text-xs mb-8">要件ヒアリング後にお見積り</div>
           <div class="h-px bg-stone-100 mb-8"></div>
-          <ul class="space-y-5 text-sm text-stone-600 mb-10">
+          <ul class="space-y-4 text-sm text-stone-600 mb-10 flex-1">
             <li class="flex items-center gap-3">
-              <svg class="w-4 h-4 text-teal-500 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg>
+              <svg class="w-3.5 h-3.5 text-stone-900 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M5 13l4 4L19 7"/></svg>
               LP＋機能プランの全内容
             </li>
             <li class="flex items-center gap-3">
-              <svg class="w-4 h-4 text-teal-500 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg>
+              <svg class="w-3.5 h-3.5 text-stone-900 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M5 13l4 4L19 7"/></svg>
               独自システム開発
             </li>
             <li class="flex items-center gap-3">
-              <svg class="w-4 h-4 text-teal-500 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg>
+              <svg class="w-3.5 h-3.5 text-stone-900 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M5 13l4 4L19 7"/></svg>
               複数ページ対応
             </li>
             <li class="flex items-center gap-3">
-              <svg class="w-4 h-4 text-teal-500 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg>
+              <svg class="w-3.5 h-3.5 text-stone-900 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M5 13l4 4L19 7"/></svg>
               外部API連携
             </li>
             <li class="flex items-center gap-3">
-              <svg class="w-4 h-4 text-teal-500 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg>
+              <svg class="w-3.5 h-3.5 text-stone-900 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M5 13l4 4L19 7"/></svg>
               継続サポート交渉可
             </li>
           </ul>
-          <a href="#contact" class="block text-center py-3.5 border border-stone-300 text-stone-700 rounded-full text-sm font-semibold hover:border-teal-500 hover:text-teal-600 transition-colors">
+          <a href="#contact" class="block text-center py-3.5 border border-stone-300 text-stone-700 text-sm hover:border-stone-900 hover:text-stone-900 transition-colors">
             相談する
           </a>
         </div>
 
       </div>
 
-      <p class="text-center text-stone-400 text-xs mt-12 leading-relaxed">
-        ※ 価格はすべて目安です。規模・機能要件・デザイン難度によって変動します。<br class="hidden sm:block"/>まずはお気軽にご相談ください。
+      <p class="text-stone-400 text-xs mt-10 leading-relaxed">
+        ※ 価格はすべて目安です。規模・機能要件・デザイン難度によって変動します。まずはお気軽にご相談ください。
       </p>
     </div>
   </section>
@@ -502,143 +383,117 @@
   <div class="divider"></div>
 
   <!-- PORTFOLIO -->
-  <section id="portfolio" class="py-32 px-6">
+  <section id="portfolio" class="py-28 px-6">
     <div class="max-w-6xl mx-auto">
-      <div class="text-center mb-24 reveal">
+      <div class="mb-20 reveal">
         <div class="section-label">
           <div class="section-label-line"></div>
-          <p class="text-teal-600 text-xs font-black tracking-[0.3em] uppercase">Works</p>
-          <div class="section-label-line-r"></div>
+          <p class="text-stone-400 text-xs tracking-[0.3em] uppercase">Works</p>
         </div>
-        <h2 class="text-4xl sm:text-5xl font-black mb-5 tracking-tight">制作実績</h2>
-        <p class="text-stone-500 text-lg max-w-md mx-auto leading-relaxed">実際に制作したサンプルサイトです。<br class="hidden sm:block"/>各業種のニーズに合わせたデザイン・機能を実装しています。</p>
+        <h2 class="serif text-3xl sm:text-4xl mb-4">制作実績</h2>
+        <p class="text-stone-500 max-w-md leading-relaxed">実際に制作したサンプルサイトです。各業種のニーズに合わせたデザイン・機能を実装しています。</p>
       </div>
 
-      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-px bg-stone-200 border border-stone-200">
 
         <!-- biyoin -->
         <a href="https://ytaka0509.github.io/biyoin-sample/" target="_blank" rel="noopener"
-           class="portfolio-card card-lift reveal group bg-white border border-stone-200 rounded-3xl overflow-hidden block shadow-sm">
-          <div class="relative h-64 overflow-hidden" style="background:linear-gradient(135deg,#1e0a2e,#3d1552)">
+           class="portfolio-card card-lift reveal group bg-white block">
+          <div class="relative h-60 overflow-hidden bg-stone-100">
             <img src="https://image.thum.io/get/width/640/crop/450/https://ytaka0509.github.io/biyoin-sample/"
                  alt="Hair Salon nagi" class="thumb absolute inset-0 w-full h-full object-cover object-top" loading="lazy"/>
-            <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
-            <div class="port-overlay absolute inset-0 bg-teal-500/15 flex items-center justify-center">
-              <span class="bg-white text-stone-900 font-black text-sm px-6 py-3 rounded-full shadow-xl translate-y-2 group-hover:translate-y-0 transition-transform duration-300">サイトを見る →</span>
-            </div>
-            <div class="absolute top-4 left-4">
-              <span class="text-xs bg-teal-500 text-zinc-950 font-bold rounded-full px-3.5 py-1.5">予約システム連携</span>
+            <div class="port-overlay absolute inset-0 bg-stone-900/30 flex items-center justify-center">
+              <span class="bg-white text-stone-900 text-sm px-6 py-2.5 translate-y-2 group-hover:translate-y-0 transition-transform duration-300">サイトを見る →</span>
             </div>
           </div>
           <div class="p-7">
-            <div class="text-xs text-stone-400 mb-2 tracking-wide">美容院 / プライベートサロン</div>
-            <h3 class="font-black text-stone-900 text-lg mb-2.5 tracking-tight">Hair Salon nagi</h3>
+            <div class="text-xs text-stone-400 mb-2 tracking-wide">美容院 / プライベートサロン ・ 予約システム連携</div>
+            <h3 class="serif text-lg text-stone-900 mb-2.5">Hair Salon nagi</h3>
             <p class="text-stone-500 text-sm leading-relaxed">渋谷の髪質改善専門サロン。Calendlyのオンライン予約をLP内に直接埋め込み、電話対応を削減。</p>
           </div>
         </a>
 
         <!-- inshokuten -->
         <a href="https://ytaka0509.github.io/inshokuten-sample/" target="_blank" rel="noopener"
-           class="portfolio-card card-lift reveal group bg-white border border-stone-200 rounded-3xl overflow-hidden block shadow-sm">
-          <div class="relative h-64 overflow-hidden" style="background:linear-gradient(135deg,#1c0a00,#3d1800)">
+           class="portfolio-card card-lift reveal group bg-white block">
+          <div class="relative h-60 overflow-hidden bg-stone-100">
             <img src="https://image.thum.io/get/width/640/crop/450/https://ytaka0509.github.io/inshokuten-sample/"
                  alt="炭火焼肉 暁月" class="thumb absolute inset-0 w-full h-full object-cover object-top" loading="lazy"/>
-            <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
-            <div class="port-overlay absolute inset-0 bg-teal-500/15 flex items-center justify-center">
-              <span class="bg-white text-stone-900 font-black text-sm px-6 py-3 rounded-full shadow-xl translate-y-2 group-hover:translate-y-0 transition-transform duration-300">サイトを見る →</span>
-            </div>
-            <div class="absolute top-4 left-4">
-              <span class="text-xs bg-sky-500 text-white font-bold rounded-full px-3.5 py-1.5">フォーム連携</span>
+            <div class="port-overlay absolute inset-0 bg-stone-900/30 flex items-center justify-center">
+              <span class="bg-white text-stone-900 text-sm px-6 py-2.5 translate-y-2 group-hover:translate-y-0 transition-transform duration-300">サイトを見る →</span>
             </div>
           </div>
           <div class="p-7">
-            <div class="text-xs text-stone-400 mb-2 tracking-wide">飲食店 / 焼肉</div>
-            <h3 class="font-black text-stone-900 text-lg mb-2.5 tracking-tight">炭火焼肉 暁月</h3>
+            <div class="text-xs text-stone-400 mb-2 tracking-wide">飲食店 / 焼肉 ・ フォーム連携</div>
+            <h3 class="serif text-lg text-stone-900 mb-2.5">炭火焼肉 暁月</h3>
             <p class="text-stone-500 text-sm leading-relaxed">東京・南青山のA5黒毛和牛専門店。Formspreeによる問い合わせ・予約フォームをLP内に実装。</p>
           </div>
         </a>
 
         <!-- dic-psychology -->
         <a href="https://ytaka0509.github.io/dic-psychology-sample/" target="_blank" rel="noopener"
-           class="portfolio-card card-lift reveal group bg-white border border-stone-200 rounded-3xl overflow-hidden block shadow-sm">
-          <div class="relative h-64 overflow-hidden" style="background:linear-gradient(135deg,#0a1628,#1a2a50)">
+           class="portfolio-card card-lift reveal group bg-white block">
+          <div class="relative h-60 overflow-hidden bg-stone-100">
             <img src="https://image.thum.io/get/width/640/crop/450/https://ytaka0509.github.io/dic-psychology-sample/"
                  alt="心理学用語集" class="thumb absolute inset-0 w-full h-full object-cover object-top" loading="lazy"/>
-            <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
-            <div class="port-overlay absolute inset-0 bg-teal-500/15 flex items-center justify-center">
-              <span class="bg-white text-stone-900 font-black text-sm px-6 py-3 rounded-full shadow-xl translate-y-2 group-hover:translate-y-0 transition-transform duration-300">サイトを見る →</span>
-            </div>
-            <div class="absolute top-4 left-4 flex gap-2">
-              <span class="text-xs bg-violet-500 text-white font-bold rounded-full px-3.5 py-1.5">検索機能付き</span>
-              <span class="text-xs bg-violet-700/90 text-white font-bold rounded-full px-3.5 py-1.5">複数ページ</span>
+            <div class="port-overlay absolute inset-0 bg-stone-900/30 flex items-center justify-center">
+              <span class="bg-white text-stone-900 text-sm px-6 py-2.5 translate-y-2 group-hover:translate-y-0 transition-transform duration-300">サイトを見る →</span>
             </div>
           </div>
           <div class="p-7">
-            <div class="text-xs text-stone-400 mb-2 tracking-wide">コンテンツサイト / 教育</div>
-            <h3 class="font-black text-stone-900 text-lg mb-2.5 tracking-tight">心理学用語集</h3>
+            <div class="text-xs text-stone-400 mb-2 tracking-wide">コンテンツサイト / 教育 ・ 検索機能付き / 複数ページ</div>
+            <h3 class="serif text-lg text-stone-900 mb-2.5">心理学用語集</h3>
             <p class="text-stone-500 text-sm leading-relaxed">心理学用語を解説するマルチページサイト。用語検索・インデックス検索をJavaScriptで実装。</p>
           </div>
         </a>
 
         <!-- eyelash-salon -->
         <a href="https://ytaka0509.github.io/eyelash-salon-sample/" target="_blank" rel="noopener"
-           class="portfolio-card card-lift reveal group bg-white border border-stone-200 rounded-3xl overflow-hidden block shadow-sm">
-          <div class="relative h-64 overflow-hidden" style="background:linear-gradient(135deg,#1a0a14,#3d1a2e)">
+           class="portfolio-card card-lift reveal group bg-white block">
+          <div class="relative h-60 overflow-hidden bg-stone-100">
             <img src="https://image.thum.io/get/width/640/crop/450/https://ytaka0509.github.io/eyelash-salon-sample/?v=1"
                  alt="Lash & Beaute Etoile" class="thumb absolute inset-0 w-full h-full object-cover object-top" loading="lazy"/>
-            <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
-            <div class="port-overlay absolute inset-0 bg-teal-500/15 flex items-center justify-center">
-              <span class="bg-white text-stone-900 font-black text-sm px-6 py-3 rounded-full shadow-xl translate-y-2 group-hover:translate-y-0 transition-transform duration-300">サイトを見る →</span>
-            </div>
-            <div class="absolute top-4 left-4">
-              <span class="text-xs bg-rose-400 text-white font-bold rounded-full px-3.5 py-1.5">レスポンシブLP</span>
+            <div class="port-overlay absolute inset-0 bg-stone-900/30 flex items-center justify-center">
+              <span class="bg-white text-stone-900 text-sm px-6 py-2.5 translate-y-2 group-hover:translate-y-0 transition-transform duration-300">サイトを見る →</span>
             </div>
           </div>
           <div class="p-7">
-            <div class="text-xs text-stone-400 mb-2 tracking-wide">美容 / アイラッシュサロン</div>
-            <h3 class="font-black text-stone-900 text-lg mb-2.5 tracking-tight">Lash &amp; Beaute Etoile</h3>
+            <div class="text-xs text-stone-400 mb-2 tracking-wide">美容 / アイラッシュサロン ・ レスポンシブLP</div>
+            <h3 class="serif text-lg text-stone-900 mb-2.5">Lash &amp; Beaute Etoile</h3>
             <p class="text-stone-500 text-sm leading-relaxed">東京・恵比寿の完全個室アイラッシュ専門サロン。上品なデザインで30〜40代女性にアプローチ。</p>
           </div>
         </a>
 
         <!-- kominka -->
         <a href="https://ytaka0509.github.io/kominka-sample/" target="_blank" rel="noopener"
-           class="portfolio-card card-lift reveal group bg-white border border-stone-200 rounded-3xl overflow-hidden block shadow-sm">
-          <div class="relative h-64 overflow-hidden" style="background:linear-gradient(135deg,#0d1f0d,#1a3520)">
+           class="portfolio-card card-lift reveal group bg-white block">
+          <div class="relative h-60 overflow-hidden bg-stone-100">
             <img src="https://image.thum.io/get/width/640/crop/450/https://ytaka0509.github.io/kominka-sample/"
                  alt="息 iki 古民家リトリート" class="thumb absolute inset-0 w-full h-full object-cover object-top" loading="lazy"/>
-            <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
-            <div class="port-overlay absolute inset-0 bg-teal-500/15 flex items-center justify-center">
-              <span class="bg-white text-stone-900 font-black text-sm px-6 py-3 rounded-full shadow-xl translate-y-2 group-hover:translate-y-0 transition-transform duration-300">サイトを見る →</span>
-            </div>
-            <div class="absolute top-4 left-4">
-              <span class="text-xs bg-stone-600 text-white font-bold rounded-full px-3.5 py-1.5">レスポンシブLP</span>
+            <div class="port-overlay absolute inset-0 bg-stone-900/30 flex items-center justify-center">
+              <span class="bg-white text-stone-900 text-sm px-6 py-2.5 translate-y-2 group-hover:translate-y-0 transition-transform duration-300">サイトを見る →</span>
             </div>
           </div>
           <div class="p-7">
-            <div class="text-xs text-stone-400 mb-2 tracking-wide">宿泊施設 / リトリート</div>
-            <h3 class="font-black text-stone-900 text-lg mb-2.5 tracking-tight">息 - iki | 古民家リトリート</h3>
+            <div class="text-xs text-stone-400 mb-2 tracking-wide">宿泊施設 / リトリート ・ レスポンシブLP</div>
+            <h3 class="serif text-lg text-stone-900 mb-2.5">息 - iki | 古民家リトリート</h3>
             <p class="text-stone-500 text-sm leading-relaxed">古民家を改修した宿泊体験施設のLP。日本の自然素材を活かした和のデザインを表現。</p>
           </div>
         </a>
 
         <!-- sekotuin -->
         <a href="https://ytaka0509.github.io/sekotuin-sample/" target="_blank" rel="noopener"
-           class="portfolio-card card-lift reveal group bg-white border border-stone-200 rounded-3xl overflow-hidden block shadow-sm">
-          <div class="relative h-64 overflow-hidden" style="background:linear-gradient(135deg,#0a1c2d,#0f2e42)">
+           class="portfolio-card card-lift reveal group bg-white block">
+          <div class="relative h-60 overflow-hidden bg-stone-100">
             <img src="https://image.thum.io/get/width/640/crop/450/https://ytaka0509.github.io/sekotuin-sample/"
                  alt="ひだまり接骨院" class="thumb absolute inset-0 w-full h-full object-cover object-top" loading="lazy"/>
-            <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
-            <div class="port-overlay absolute inset-0 bg-teal-500/15 flex items-center justify-center">
-              <span class="bg-white text-stone-900 font-black text-sm px-6 py-3 rounded-full shadow-xl translate-y-2 group-hover:translate-y-0 transition-transform duration-300">サイトを見る →</span>
-            </div>
-            <div class="absolute top-4 left-4">
-              <span class="text-xs bg-stone-600 text-white font-bold rounded-full px-3.5 py-1.5">レスポンシブLP</span>
+            <div class="port-overlay absolute inset-0 bg-stone-900/30 flex items-center justify-center">
+              <span class="bg-white text-stone-900 text-sm px-6 py-2.5 translate-y-2 group-hover:translate-y-0 transition-transform duration-300">サイトを見る →</span>
             </div>
           </div>
           <div class="p-7">
-            <div class="text-xs text-stone-400 mb-2 tracking-wide">医療 / 接骨院</div>
-            <h3 class="font-black text-stone-900 text-lg mb-2.5 tracking-tight">ひだまり接骨院</h3>
+            <div class="text-xs text-stone-400 mb-2 tracking-wide">医療 / 接骨院 ・ レスポンシブLP</div>
+            <h3 class="serif text-lg text-stone-900 mb-2.5">ひだまり接骨院</h3>
             <p class="text-stone-500 text-sm leading-relaxed">東京・世田谷の接骨院LP。信頼感を重視した清潔なデザインで、患者の不安を払拭する構成。</p>
           </div>
         </a>
@@ -650,127 +505,113 @@
   <div class="divider"></div>
 
   <!-- PROCESS -->
-  <section id="process" class="py-32 px-6 bg-stone-100/40">
+  <section id="process" class="py-28 px-6 bg-stone-50">
     <div class="max-w-5xl mx-auto">
-      <div class="text-center mb-24 reveal">
+      <div class="mb-20 reveal">
         <div class="section-label">
           <div class="section-label-line"></div>
-          <p class="text-teal-600 text-xs font-black tracking-[0.3em] uppercase">Process</p>
-          <div class="section-label-line-r"></div>
+          <p class="text-stone-400 text-xs tracking-[0.3em] uppercase">Process</p>
         </div>
-        <h2 class="text-4xl sm:text-5xl font-black mb-5 tracking-tight">制作の流れ</h2>
-        <p class="text-stone-500 text-lg max-w-md mx-auto leading-relaxed">お問い合わせから納品まで、<br class="hidden sm:block"/>透明性のある5ステップで進めます。</p>
+        <h2 class="serif text-3xl sm:text-4xl mb-4">制作の流れ</h2>
+        <p class="text-stone-500 max-w-md leading-relaxed">お問い合わせから納品まで、透明性のある5ステップで進めます。</p>
       </div>
 
-      <div class="relative">
-        <div class="hidden lg:block absolute top-9 left-[calc(10%+2.5rem)] right-[calc(10%+2.5rem)] h-px pointer-events-none"
-             style="background:linear-gradient(90deg,rgba(15,118,110,0.5),rgba(15,118,110,0.15),rgba(15,118,110,0.5))"></div>
-        <div class="grid sm:grid-cols-2 lg:grid-cols-5 gap-8 lg:gap-5">
+      <div class="border-t border-stone-200">
 
-          <div class="reveal flex flex-col items-center text-center group">
-            <div class="w-18 h-18 bg-white border-2 border-teal-500 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-teal-50 transition-all z-10 relative shadow-sm" style="width:4.5rem;height:4.5rem;">
-              <span class="text-lg font-black text-teal-600">01</span>
-            </div>
-            <h3 class="font-black text-stone-900 text-sm mb-3 tracking-tight">ヒアリング</h3>
-            <p class="text-stone-400 text-xs leading-relaxed">ご要望・事業内容・ターゲット・競合サイトをオンラインでヒアリングします。</p>
+        <div class="reveal flex items-start gap-8 py-7 border-b border-stone-200">
+          <span class="idx-num w-8 flex-shrink-0">01</span>
+          <div>
+            <h3 class="text-stone-900 font-medium mb-1.5">ヒアリング</h3>
+            <p class="text-stone-500 text-sm leading-relaxed">ご要望・事業内容・ターゲット・競合サイトをオンラインでヒアリングします。</p>
           </div>
-
-          <div class="reveal flex flex-col items-center text-center group">
-            <div class="bg-white border-2 border-stone-200 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-teal-50 group-hover:border-teal-400 transition-all z-10 relative shadow-sm" style="width:4.5rem;height:4.5rem;">
-              <span class="text-lg font-black text-stone-400 group-hover:text-teal-600 transition-colors">02</span>
-            </div>
-            <h3 class="font-black text-stone-900 text-sm mb-3 tracking-tight">企画・設計</h3>
-            <p class="text-stone-400 text-xs leading-relaxed">ページ構成・機能要件を整理し、サイトマップ・ワイヤーフレームを共有します。</p>
-          </div>
-
-          <div class="reveal flex flex-col items-center text-center group">
-            <div class="bg-white border-2 border-stone-200 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-teal-50 group-hover:border-teal-400 transition-all z-10 relative shadow-sm" style="width:4.5rem;height:4.5rem;">
-              <span class="text-lg font-black text-stone-400 group-hover:text-teal-600 transition-colors">03</span>
-            </div>
-            <h3 class="font-black text-stone-900 text-sm mb-3 tracking-tight">デザイン・制作</h3>
-            <p class="text-stone-400 text-xs leading-relaxed">デザイン確認後、本実装を進めます。修正は最大3回まで無料対応。</p>
-          </div>
-
-          <div class="reveal flex flex-col items-center text-center group">
-            <div class="bg-white border-2 border-stone-200 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-teal-50 group-hover:border-teal-400 transition-all z-10 relative shadow-sm" style="width:4.5rem;height:4.5rem;">
-              <span class="text-lg font-black text-stone-400 group-hover:text-teal-600 transition-colors">04</span>
-            </div>
-            <h3 class="font-black text-stone-900 text-sm mb-3 tracking-tight">テスト・修正</h3>
-            <p class="text-stone-400 text-xs leading-relaxed">PC・スマホ・タブレットで動作確認を行い、フィードバックを反映します。</p>
-          </div>
-
-          <div class="reveal flex flex-col items-center text-center group">
-            <div class="bg-white border-2 border-stone-200 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-teal-50 group-hover:border-teal-400 transition-all z-10 relative shadow-sm" style="width:4.5rem;height:4.5rem;">
-              <span class="text-lg font-black text-stone-400 group-hover:text-teal-600 transition-colors">05</span>
-            </div>
-            <h3 class="font-black text-stone-900 text-sm mb-3 tracking-tight">納品・サポート</h3>
-            <p class="text-stone-400 text-xs leading-relaxed">ファイル納品または公開代行。納品後1ヶ月間は無料でサポートします。</p>
-          </div>
-
         </div>
+
+        <div class="reveal flex items-start gap-8 py-7 border-b border-stone-200">
+          <span class="idx-num w-8 flex-shrink-0">02</span>
+          <div>
+            <h3 class="text-stone-900 font-medium mb-1.5">企画・設計</h3>
+            <p class="text-stone-500 text-sm leading-relaxed">ページ構成・機能要件を整理し、サイトマップ・ワイヤーフレームを共有します。</p>
+          </div>
+        </div>
+
+        <div class="reveal flex items-start gap-8 py-7 border-b border-stone-200">
+          <span class="idx-num w-8 flex-shrink-0">03</span>
+          <div>
+            <h3 class="text-stone-900 font-medium mb-1.5">デザイン・制作</h3>
+            <p class="text-stone-500 text-sm leading-relaxed">デザイン確認後、本実装を進めます。修正は最大3回まで無料対応。</p>
+          </div>
+        </div>
+
+        <div class="reveal flex items-start gap-8 py-7 border-b border-stone-200">
+          <span class="idx-num w-8 flex-shrink-0">04</span>
+          <div>
+            <h3 class="text-stone-900 font-medium mb-1.5">テスト・修正</h3>
+            <p class="text-stone-500 text-sm leading-relaxed">PC・スマホ・タブレットで動作確認を行い、フィードバックを反映します。</p>
+          </div>
+        </div>
+
+        <div class="reveal flex items-start gap-8 py-7">
+          <span class="idx-num w-8 flex-shrink-0">05</span>
+          <div>
+            <h3 class="text-stone-900 font-medium mb-1.5">納品・サポート</h3>
+            <p class="text-stone-500 text-sm leading-relaxed">ファイル納品または公開代行。納品後1ヶ月間は無料でサポートします。</p>
+          </div>
+        </div>
+
       </div>
 
-      <div class="mt-16 text-center">
-        <div class="inline-flex items-center gap-2.5 px-6 py-3 bg-white border border-stone-200 rounded-full text-stone-500 text-xs font-medium shadow-sm">
-          <svg class="w-3.5 h-3.5 text-teal-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
-          </svg>
-          納期目安：LP基本 1〜2週間 / LP＋機能 2〜4週間 / フルカスタム 要相談
-        </div>
+      <div class="mt-10 flex items-center gap-2.5 text-stone-500 text-xs">
+        <svg class="w-3.5 h-3.5 text-stone-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
+        </svg>
+        納期目安：LP基本 1〜2週間 / LP＋機能 2〜4週間 / フルカスタム 要相談
       </div>
     </div>
   </section>
 
   <!-- CONTACT -->
-  <section id="contact" class="py-32 px-6 relative overflow-hidden">
-    <div class="absolute inset-0 pointer-events-none"
-         style="background:radial-gradient(ellipse at 50% 60%, rgba(15,118,110,0.07) 0%, transparent 60%)"></div>
-    <div class="relative max-w-2xl mx-auto text-center">
+  <section id="contact" class="py-28 px-6">
+    <div class="max-w-2xl mx-auto">
       <div class="section-label reveal">
         <div class="section-label-line"></div>
-        <p class="text-teal-600 text-xs font-black tracking-[0.3em] uppercase">Contact</p>
-        <div class="section-label-line-r"></div>
+        <p class="text-stone-400 text-xs tracking-[0.3em] uppercase">Contact</p>
       </div>
-      <h2 class="text-4xl sm:text-5xl font-black mb-6 reveal tracking-tight">まずはお気軽に</h2>
-      <p class="text-stone-500 text-lg mb-16 leading-relaxed reveal">
+      <h2 class="serif text-3xl sm:text-4xl mb-5 reveal">まずはお気軽に</h2>
+      <p class="text-stone-500 mb-14 leading-relaxed reveal">
         「LPを作りたいけど機能も欲しい」「予算感を確認したい」など、<br class="hidden sm:block" />
         どんな段階のご相談でも大歓迎です。
       </p>
 
-      <div class="flex flex-col sm:flex-row gap-5 justify-center mb-10 reveal">
-        <div class="flex items-center gap-4 px-7 py-5 bg-white border border-stone-200 rounded-2xl shadow-sm">
-          <div class="w-12 h-12 bg-stone-100 rounded-xl flex items-center justify-center flex-shrink-0">
-            <svg class="w-5 h-5 text-teal-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
-            </svg>
-          </div>
+      <div class="flex flex-col sm:flex-row gap-px bg-stone-200 border border-stone-200 mb-8 reveal">
+        <div class="flex items-center gap-4 px-7 py-5 bg-white flex-1">
+          <svg class="w-5 h-5 text-stone-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+          </svg>
           <div class="text-left">
             <div class="text-xs text-stone-400 mb-1 tracking-wide">メールで相談（無料）</div>
-            <div class="text-sm font-black text-stone-900 tracking-tight">お問い合わせはこちら</div>
+            <div class="text-sm text-stone-900">お問い合わせはこちら</div>
           </div>
         </div>
 
         <a href="https://coconala.com/" target="_blank" rel="noopener"
-           class="flex items-center gap-4 px-7 py-5 bg-white border border-stone-200 rounded-2xl hover:border-teal-300 hover:bg-stone-50/80 transition-all group shadow-sm">
-          <div class="w-12 h-12 bg-stone-100 rounded-xl flex items-center justify-center flex-shrink-0 group-hover:bg-amber-50 transition-colors">
-            <svg class="w-5 h-5 text-amber-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/>
-            </svg>
-          </div>
+           class="flex items-center gap-4 px-7 py-5 bg-white flex-1 hover:bg-stone-50 transition-colors group">
+          <svg class="w-5 h-5 text-stone-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/>
+          </svg>
           <div class="text-left flex-1">
             <div class="text-xs text-stone-400 mb-1 tracking-wide">ココナラで依頼</div>
-            <div class="text-sm font-black text-stone-900 tracking-tight">サービスページはこちら</div>
+            <div class="text-sm text-stone-900">サービスページはこちら</div>
           </div>
-          <svg class="w-4 h-4 text-stone-300 group-hover:text-teal-500 transition-colors ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
+          <svg class="w-4 h-4 text-stone-300 group-hover:text-stone-900 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
           </svg>
         </a>
       </div>
 
-      <div class="reveal bg-stone-50 border border-stone-200 rounded-2xl p-6 text-sm text-stone-500 text-left">
+      <div class="reveal border border-stone-200 p-6 text-sm text-stone-500 text-left">
         <div class="flex items-start gap-3.5">
-          <svg class="w-4 h-4 text-teal-500 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+          <svg class="w-4 h-4 text-stone-400 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
           </svg>
           <span class="leading-relaxed">初回の無料相談（30分〜）で、ご要望の確認と大まかなお見積りをお伝えします。通常2営業日以内にご返信いたします。</span>
         </div>
@@ -779,18 +620,17 @@
   </section>
 
   <!-- FOOTER -->
-  <footer class="border-t border-stone-200 bg-white py-10 px-6">
+  <footer class="border-t border-stone-200 py-10 px-6">
     <div class="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-5">
-      <a href="#" class="font-black text-base tracking-tight">
-        <span class="g-text">W</span><span class="text-stone-900">EB制作</span>
-        <span class="text-stone-400 font-normal ml-1.5">ポートフォリオ</span>
+      <a href="#" class="serif text-base text-stone-900">
+        WEB制作 <span class="text-stone-400 font-normal">ポートフォリオ</span>
       </a>
       <nav class="flex flex-wrap justify-center gap-7 text-sm text-stone-400">
-        <a href="#services"  class="hover:text-stone-700 transition-colors">できること</a>
-        <a href="#pricing"   class="hover:text-stone-700 transition-colors">料金</a>
-        <a href="#portfolio" class="hover:text-stone-700 transition-colors">制作実績</a>
-        <a href="#process"   class="hover:text-stone-700 transition-colors">制作の流れ</a>
-        <a href="#contact"   class="hover:text-stone-700 transition-colors">お問い合わせ</a>
+        <a href="#services"  class="hover:text-stone-900 transition-colors">できること</a>
+        <a href="#pricing"   class="hover:text-stone-900 transition-colors">料金</a>
+        <a href="#portfolio" class="hover:text-stone-900 transition-colors">制作実績</a>
+        <a href="#process"   class="hover:text-stone-900 transition-colors">制作の流れ</a>
+        <a href="#contact"   class="hover:text-stone-900 transition-colors">お問い合わせ</a>
       </nav>
       <span class="text-stone-400 text-xs">&copy; 2025 Web制作ポートフォリオ</span>
     </div>
