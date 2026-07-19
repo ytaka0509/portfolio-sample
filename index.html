@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Web制作ポートフォリオ | Webアプリ開発・Webシステム構築</title>
-  <meta name="description" content="集客できるWebアプリ開発と業務システム、まとめて作ります。予約システム・料金シミュレーター・フォーム構築まで対応。" />
+  <title>Web制作ポートフォリオ | 実績・スキル一覧</title>
+  <meta name="description" content="LP制作からWebアプリ開発、SEO・コンテンツ戦略まで。制作実績とスキルをまとめたポートフォリオサイトです。" />
   <link rel="icon" href="favicon.svg" type="image/svg+xml" />
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -26,8 +26,8 @@
       color: #a8a29e;
     }
 
-    .card-lift { transition: border-color 0.3s ease, transform 0.3s ease; }
-    .card-lift:hover { transform: translateY(-3px); }
+    .card-lift { transition: border-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease; }
+    .card-lift:hover { transform: translateY(-4px); box-shadow: 0 20px 40px -20px rgba(28,25,23,0.25); }
 
     .thumb { transition: transform 0.7s ease, filter 0.7s ease; filter: grayscale(45%); }
     .portfolio-card:hover .thumb { transform: scale(1.03); filter: grayscale(0%); }
@@ -58,6 +58,14 @@
     }
     .btn-ink:hover { background: #292524; }
 
+    .hero-glow {
+      background: radial-gradient(ellipse 60% 50% at 80% 10%, rgba(28,25,23,0.05), transparent 70%);
+    }
+
+    .badge-tag {
+      backdrop-filter: blur(4px);
+    }
+
     ::-webkit-scrollbar { width: 4px; }
     ::-webkit-scrollbar-track { background: #fafaf9; }
     ::-webkit-scrollbar-thumb { background: #d6d3d1; }
@@ -74,12 +82,10 @@
       </a>
       <div class="hidden sm:flex items-center gap-9 text-sm text-stone-500">
         <a href="#services" class="hover:text-stone-900 transition-colors">できること</a>
-        <a href="#pricing"  class="hover:text-stone-900 transition-colors">料金</a>
         <a href="#portfolio" class="hover:text-stone-900 transition-colors">実績</a>
-        <a href="#process"  class="hover:text-stone-900 transition-colors">流れ</a>
         <a href="#contact"
            class="ml-2 px-6 py-2.5 btn-ink font-medium text-xs tracking-wide transition-colors">
-          無料相談
+          お問い合わせ
         </a>
       </div>
       <button class="sm:hidden text-stone-500 hover:text-stone-900 transition-colors"
@@ -93,63 +99,57 @@
     <div id="mob" class="hidden sm:hidden bg-white border-t border-stone-200">
       <div class="flex flex-col p-5 gap-1 text-sm">
         <a href="#services"  class="py-3 px-4 text-stone-600 hover:text-stone-900 hover:bg-stone-50 transition-colors" onclick="document.getElementById('mob').classList.add('hidden')">できること</a>
-        <a href="#pricing"   class="py-3 px-4 text-stone-600 hover:text-stone-900 hover:bg-stone-50 transition-colors" onclick="document.getElementById('mob').classList.add('hidden')">料金目安</a>
         <a href="#portfolio" class="py-3 px-4 text-stone-600 hover:text-stone-900 hover:bg-stone-50 transition-colors" onclick="document.getElementById('mob').classList.add('hidden')">制作実績</a>
-        <a href="#process"   class="py-3 px-4 text-stone-600 hover:text-stone-900 hover:bg-stone-50 transition-colors" onclick="document.getElementById('mob').classList.add('hidden')">制作の流れ</a>
-        <a href="#contact"   class="mt-3 py-3 px-4 btn-ink text-center font-medium transition-colors" onclick="document.getElementById('mob').classList.add('hidden')">無料相談はこちら</a>
+        <a href="#contact"   class="mt-3 py-3 px-4 btn-ink text-center font-medium transition-colors" onclick="document.getElementById('mob').classList.add('hidden')">お問い合わせはこちら</a>
       </div>
     </div>
   </nav>
 
   <!-- HERO -->
-  <section class="relative px-6 border-b border-stone-200" style="padding-top:9.5rem;padding-bottom:6rem;">
+  <section class="hero-glow relative px-6 border-b border-stone-200" style="padding-top:9.5rem;padding-bottom:6rem;">
     <div class="max-w-6xl mx-auto grid lg:grid-cols-12 gap-16 items-end">
       <div class="lg:col-span-8 reveal">
         <div class="flex items-center gap-2.5 mb-9 text-stone-400 text-xs tracking-[0.25em] uppercase">
           <span class="w-6 h-px bg-stone-400"></span>
-          Web Design &amp; Development
+          Web Design &amp; Development Portfolio
         </div>
         <h1 class="serif hero-hl text-stone-900 mb-10">
-          Webアプリ開発<br />
-          業務システム開発<br />
-          <span class="italic">まとめて</span>設計・実装
+          Webサイト制作から<br />
+          業務システム開発、<br />
+          <span class="italic">集客設計</span>まで一貫対応
         </h1>
         <p class="text-stone-500 text-base sm:text-lg max-w-lg leading-loose mb-12">
-          集客できるデザインから予約システム・料金シミュレーター・フォーム連携まで。<br class="hidden sm:block" />
-          デザインとシステムをワンストップで担当します。
+          LP・Webアプリの設計から、SEO・AIOやコンテンツ戦略、広告運用まで。<br class="hidden sm:block" />
+          企画から実装・運用までワンストップで対応できるのが強みです。
         </p>
         <div class="flex flex-col sm:flex-row gap-4">
-          <a href="#contact"
+          <a href="#portfolio"
              class="inline-flex items-center justify-center gap-2.5 px-9 py-4 btn-ink font-medium transition-colors text-sm">
-            無料相談はこちら
+            制作実績を見る
             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
             </svg>
           </a>
-          <a href="#portfolio"
+          <a href="#contact"
              class="inline-flex items-center justify-center gap-2.5 px-9 py-4 border border-stone-300 text-stone-700 font-medium hover:border-stone-900 hover:text-stone-900 transition-colors text-sm">
-            制作実績を見る
+            お問い合わせ
           </a>
         </div>
       </div>
 
       <div class="lg:col-span-4 reveal">
-        <dl class="grid grid-cols-2 gap-y-9 gap-x-6 border-t border-stone-200 pt-8">
+        <dl class="grid grid-cols-3 gap-y-9 gap-x-6 border-t border-stone-200 pt-8">
           <div>
             <dt class="text-stone-400 text-xs tracking-wider mb-2">制作実績</dt>
             <dd class="serif text-3xl text-stone-900">8+</dd>
           </div>
           <div>
-            <dt class="text-stone-400 text-xs tracking-wider mb-2">対応機能</dt>
+            <dt class="text-stone-400 text-xs tracking-wider mb-2">対応領域</dt>
             <dd class="serif text-3xl text-stone-900">6</dd>
           </div>
           <div>
             <dt class="text-stone-400 text-xs tracking-wider mb-2">納品後サポート</dt>
             <dd class="serif text-3xl text-stone-900">1ヶ月</dd>
-          </div>
-          <div>
-            <dt class="text-stone-400 text-xs tracking-wider mb-2">スタート価格</dt>
-            <dd class="serif text-3xl text-stone-900">¥5万〜</dd>
           </div>
         </dl>
       </div>
@@ -162,10 +162,10 @@
       <div class="mb-20 reveal">
         <div class="section-label">
           <div class="section-label-line"></div>
-          <p class="text-stone-400 text-xs tracking-[0.3em] uppercase">Services</p>
+          <p class="text-stone-400 text-xs tracking-[0.3em] uppercase">Skills</p>
         </div>
         <h2 class="serif text-3xl sm:text-4xl mb-4">できること</h2>
-        <p class="text-stone-500 max-w-md leading-relaxed">LP制作からWebアプリ・システム開発まで。必要なものをワンストップで対応します。</p>
+        <p class="text-stone-500 max-w-md leading-relaxed">LP制作からWebアプリ開発、SEO・広告運用まで。企画から実装・運用まで一気通貫で対応できる守備範囲の広さが強みです。</p>
       </div>
 
       <div class="border-t border-stone-200">
@@ -287,142 +287,8 @@
 
   <div class="divider"></div>
 
-  <!-- PRICING -->
-  <section id="pricing" class="py-28 px-6 bg-stone-50">
-    <div class="max-w-5xl mx-auto">
-      <div class="mb-20 reveal">
-        <div class="section-label">
-          <div class="section-label-line"></div>
-          <p class="text-stone-400 text-xs tracking-[0.3em] uppercase">Pricing</p>
-        </div>
-        <h2 class="serif text-3xl sm:text-4xl mb-4">料金目安</h2>
-        <p class="text-stone-500 max-w-md leading-relaxed">すべて税込み表示。要件によって変動します。まずはご相談ください。</p>
-      </div>
-
-      <div class="grid sm:grid-cols-3 gap-px bg-stone-200 border border-stone-200">
-
-        <!-- LP基本 -->
-        <div class="reveal bg-white p-10 flex flex-col">
-          <div class="text-stone-400 text-sm mb-5">LP基本プラン</div>
-          <div class="flex items-end gap-1 mb-1">
-            <span class="serif text-3xl text-stone-900">¥50,000</span>
-            <span class="text-stone-400 text-lg mb-0.5">〜</span>
-          </div>
-          <div class="text-stone-400 text-xs mb-8">税込み / 要件により変動</div>
-          <div class="h-px bg-stone-100 mb-8"></div>
-          <ul class="space-y-4 text-sm text-stone-600 mb-10 flex-1">
-            <li class="flex items-center gap-3">
-              <svg class="w-3.5 h-3.5 text-stone-900 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M5 13l4 4L19 7"/></svg>
-              1ページ完結LP
-            </li>
-            <li class="flex items-center gap-3">
-              <svg class="w-3.5 h-3.5 text-stone-900 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M5 13l4 4L19 7"/></svg>
-              PC・スマホ両対応
-            </li>
-            <li class="flex items-center gap-3">
-              <svg class="w-3.5 h-3.5 text-stone-900 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M5 13l4 4L19 7"/></svg>
-              お問い合わせフォーム
-            </li>
-            <li class="flex items-center gap-3">
-              <svg class="w-3.5 h-3.5 text-stone-900 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M5 13l4 4L19 7"/></svg>
-              納品後1ヶ月サポート
-            </li>
-            <li class="flex items-center gap-3 text-stone-300">
-              <svg class="w-3.5 h-3.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M6 18L18 6M6 6l12 12"/></svg>
-              システム機能
-            </li>
-          </ul>
-          <a href="#contact" class="block text-center py-3.5 border border-stone-300 text-stone-700 text-sm hover:border-stone-900 hover:text-stone-900 transition-colors">
-            相談する
-          </a>
-        </div>
-
-        <!-- LP＋機能 Featured -->
-        <div class="reveal bg-white p-10 flex flex-col border-2 border-stone-900 -my-px">
-          <div class="text-stone-900 text-sm mb-5 flex items-center justify-between">
-            LP＋機能プラン
-            <span class="text-xs border border-stone-900 px-2.5 py-1 tracking-wide">人気</span>
-          </div>
-          <div class="flex items-end gap-1 mb-1">
-            <span class="serif text-3xl text-stone-900">¥100,000</span>
-            <span class="text-stone-400 text-lg mb-0.5">〜</span>
-          </div>
-          <div class="text-stone-400 text-xs mb-8">税込み / 要件により変動</div>
-          <div class="h-px bg-stone-100 mb-8"></div>
-          <ul class="space-y-4 text-sm text-stone-600 mb-10 flex-1">
-            <li class="flex items-center gap-3">
-              <svg class="w-3.5 h-3.5 text-stone-900 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M5 13l4 4L19 7"/></svg>
-              基本プランの全内容
-            </li>
-            <li class="flex items-center gap-3">
-              <svg class="w-3.5 h-3.5 text-stone-900 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M5 13l4 4L19 7"/></svg>
-              予約システム組み込み
-            </li>
-            <li class="flex items-center gap-3">
-              <svg class="w-3.5 h-3.5 text-stone-900 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M5 13l4 4L19 7"/></svg>
-              料金シミュレーター
-            </li>
-            <li class="flex items-center gap-3">
-              <svg class="w-3.5 h-3.5 text-stone-900 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M5 13l4 4L19 7"/></svg>
-              自動メール通知フォーム
-            </li>
-            <li class="flex items-center gap-3">
-              <svg class="w-3.5 h-3.5 text-stone-900 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M5 13l4 4L19 7"/></svg>
-              納品後1ヶ月サポート
-            </li>
-          </ul>
-          <a href="#contact" class="block text-center py-3.5 btn-ink text-sm transition-colors">
-            相談する
-          </a>
-        </div>
-
-        <!-- フルカスタム -->
-        <div class="reveal bg-white p-10 flex flex-col">
-          <div class="text-stone-400 text-sm mb-5">フルカスタムプラン</div>
-          <div class="flex items-end gap-1 mb-1">
-            <span class="serif text-3xl text-stone-900">要相談</span>
-          </div>
-          <div class="text-stone-400 text-xs mb-8">要件ヒアリング後にお見積り</div>
-          <div class="h-px bg-stone-100 mb-8"></div>
-          <ul class="space-y-4 text-sm text-stone-600 mb-10 flex-1">
-            <li class="flex items-center gap-3">
-              <svg class="w-3.5 h-3.5 text-stone-900 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M5 13l4 4L19 7"/></svg>
-              LP＋機能プランの全内容
-            </li>
-            <li class="flex items-center gap-3">
-              <svg class="w-3.5 h-3.5 text-stone-900 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M5 13l4 4L19 7"/></svg>
-              独自システム開発
-            </li>
-            <li class="flex items-center gap-3">
-              <svg class="w-3.5 h-3.5 text-stone-900 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M5 13l4 4L19 7"/></svg>
-              複数ページ対応
-            </li>
-            <li class="flex items-center gap-3">
-              <svg class="w-3.5 h-3.5 text-stone-900 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M5 13l4 4L19 7"/></svg>
-              外部API連携
-            </li>
-            <li class="flex items-center gap-3">
-              <svg class="w-3.5 h-3.5 text-stone-900 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M5 13l4 4L19 7"/></svg>
-              継続サポート交渉可
-            </li>
-          </ul>
-          <a href="#contact" class="block text-center py-3.5 border border-stone-300 text-stone-700 text-sm hover:border-stone-900 hover:text-stone-900 transition-colors">
-            相談する
-          </a>
-        </div>
-
-      </div>
-
-      <p class="text-stone-400 text-xs mt-10 leading-relaxed">
-        ※ 価格はすべて目安です。規模・機能要件・デザイン難度によって変動します。まずはお気軽にご相談ください。
-      </p>
-    </div>
-  </section>
-
-  <div class="divider"></div>
-
   <!-- PORTFOLIO -->
-  <section id="portfolio" class="py-28 px-6">
+  <section id="portfolio" class="py-28 px-6 bg-stone-50">
     <div class="max-w-6xl mx-auto">
       <div class="mb-20 reveal">
         <div class="section-label">
@@ -430,17 +296,18 @@
           <p class="text-stone-400 text-xs tracking-[0.3em] uppercase">Works</p>
         </div>
         <h2 class="serif text-3xl sm:text-4xl mb-4">制作実績</h2>
-        <p class="text-stone-500 max-w-md leading-relaxed">実際に制作したサンプルサイトです。各業種のニーズに合わせたデザイン・機能を実装しています。</p>
+        <p class="text-stone-500 max-w-md leading-relaxed">自社で運営するメディアと、業種別に制作したLPサンプルです。企画・デザイン・実装・運用まで、実際に手を動かしています。</p>
       </div>
 
       <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-px bg-stone-200 border border-stone-200">
 
         <!-- furikatu.dev -->
         <a href="https://furikatu.com/" target="_blank" rel="noopener"
-           class="portfolio-card card-lift reveal group bg-white block">
+           class="portfolio-card card-lift reveal group bg-white block relative">
           <div class="relative h-60 overflow-hidden bg-stone-100">
             <img src="https://image.thum.io/get/width/640/crop/450/https://furikatu.com/"
                  alt="furikatu.dev" class="thumb absolute inset-0 w-full h-full object-cover object-top" loading="lazy"/>
+            <span class="badge-tag absolute top-3 left-3 bg-stone-900/85 text-white text-[11px] tracking-wide px-2.5 py-1">自社運営メディア</span>
             <div class="port-overlay absolute inset-0 bg-stone-900/30 flex items-center justify-center">
               <span class="bg-white text-stone-900 text-sm px-6 py-2.5 translate-y-2 group-hover:translate-y-0 transition-transform duration-300">サイトを見る →</span>
             </div>
@@ -454,10 +321,11 @@
 
         <!-- fortiesmedia.com -->
         <a href="https://fortiesmedia.com/" target="_blank" rel="noopener"
-           class="portfolio-card card-lift reveal group bg-white block">
+           class="portfolio-card card-lift reveal group bg-white block relative">
           <div class="relative h-60 overflow-hidden bg-stone-100">
             <img src="https://image.thum.io/get/width/640/crop/450/https://fortiesmedia.com/"
                  alt="Forties-Life" class="thumb absolute inset-0 w-full h-full object-cover object-top" loading="lazy"/>
+            <span class="badge-tag absolute top-3 left-3 bg-stone-900/85 text-white text-[11px] tracking-wide px-2.5 py-1">自社運営メディア</span>
             <div class="port-overlay absolute inset-0 bg-stone-900/30 flex items-center justify-center">
               <span class="bg-white text-stone-900 text-sm px-6 py-2.5 translate-y-2 group-hover:translate-y-0 transition-transform duration-300">サイトを見る →</span>
             </div>
@@ -471,10 +339,11 @@
 
         <!-- biyoin -->
         <a href="https://ytaka0509.github.io/biyoin-sample/" target="_blank" rel="noopener"
-           class="portfolio-card card-lift reveal group bg-white block">
+           class="portfolio-card card-lift reveal group bg-white block relative">
           <div class="relative h-60 overflow-hidden bg-stone-100">
             <img src="https://image.thum.io/get/width/640/crop/450/https://ytaka0509.github.io/biyoin-sample/"
                  alt="Hair Salon nagi" class="thumb absolute inset-0 w-full h-full object-cover object-top" loading="lazy"/>
+            <span class="badge-tag absolute top-3 left-3 bg-white/90 text-stone-700 text-[11px] tracking-wide px-2.5 py-1 border border-stone-200">制作実績サンプル</span>
             <div class="port-overlay absolute inset-0 bg-stone-900/30 flex items-center justify-center">
               <span class="bg-white text-stone-900 text-sm px-6 py-2.5 translate-y-2 group-hover:translate-y-0 transition-transform duration-300">サイトを見る →</span>
             </div>
@@ -488,10 +357,11 @@
 
         <!-- inshokuten -->
         <a href="https://ytaka0509.github.io/inshokuten-sample/" target="_blank" rel="noopener"
-           class="portfolio-card card-lift reveal group bg-white block">
+           class="portfolio-card card-lift reveal group bg-white block relative">
           <div class="relative h-60 overflow-hidden bg-stone-100">
             <img src="https://image.thum.io/get/width/640/crop/450/https://ytaka0509.github.io/inshokuten-sample/"
                  alt="炭火焼肉 暁月" class="thumb absolute inset-0 w-full h-full object-cover object-top" loading="lazy"/>
+            <span class="badge-tag absolute top-3 left-3 bg-white/90 text-stone-700 text-[11px] tracking-wide px-2.5 py-1 border border-stone-200">制作実績サンプル</span>
             <div class="port-overlay absolute inset-0 bg-stone-900/30 flex items-center justify-center">
               <span class="bg-white text-stone-900 text-sm px-6 py-2.5 translate-y-2 group-hover:translate-y-0 transition-transform duration-300">サイトを見る →</span>
             </div>
@@ -505,10 +375,11 @@
 
         <!-- dic-psychology -->
         <a href="https://ytaka0509.github.io/dic-psychology-sample/" target="_blank" rel="noopener"
-           class="portfolio-card card-lift reveal group bg-white block">
+           class="portfolio-card card-lift reveal group bg-white block relative">
           <div class="relative h-60 overflow-hidden bg-stone-100">
             <img src="https://image.thum.io/get/width/640/crop/450/https://ytaka0509.github.io/dic-psychology-sample/"
                  alt="心理学用語集" class="thumb absolute inset-0 w-full h-full object-cover object-top" loading="lazy"/>
+            <span class="badge-tag absolute top-3 left-3 bg-white/90 text-stone-700 text-[11px] tracking-wide px-2.5 py-1 border border-stone-200">制作実績サンプル</span>
             <div class="port-overlay absolute inset-0 bg-stone-900/30 flex items-center justify-center">
               <span class="bg-white text-stone-900 text-sm px-6 py-2.5 translate-y-2 group-hover:translate-y-0 transition-transform duration-300">サイトを見る →</span>
             </div>
@@ -522,10 +393,11 @@
 
         <!-- eyelash-salon -->
         <a href="https://ytaka0509.github.io/eyelash-salon-sample/" target="_blank" rel="noopener"
-           class="portfolio-card card-lift reveal group bg-white block">
+           class="portfolio-card card-lift reveal group bg-white block relative">
           <div class="relative h-60 overflow-hidden bg-stone-100">
             <img src="https://image.thum.io/get/width/640/crop/450/https://ytaka0509.github.io/eyelash-salon-sample/?v=1"
                  alt="Lash & Beaute Etoile" class="thumb absolute inset-0 w-full h-full object-cover object-top" loading="lazy"/>
+            <span class="badge-tag absolute top-3 left-3 bg-white/90 text-stone-700 text-[11px] tracking-wide px-2.5 py-1 border border-stone-200">制作実績サンプル</span>
             <div class="port-overlay absolute inset-0 bg-stone-900/30 flex items-center justify-center">
               <span class="bg-white text-stone-900 text-sm px-6 py-2.5 translate-y-2 group-hover:translate-y-0 transition-transform duration-300">サイトを見る →</span>
             </div>
@@ -539,10 +411,11 @@
 
         <!-- kominka -->
         <a href="https://ytaka0509.github.io/kominka-sample/" target="_blank" rel="noopener"
-           class="portfolio-card card-lift reveal group bg-white block">
+           class="portfolio-card card-lift reveal group bg-white block relative">
           <div class="relative h-60 overflow-hidden bg-stone-100">
             <img src="https://image.thum.io/get/width/640/crop/450/https://ytaka0509.github.io/kominka-sample/"
                  alt="息 iki 古民家リトリート" class="thumb absolute inset-0 w-full h-full object-cover object-top" loading="lazy"/>
+            <span class="badge-tag absolute top-3 left-3 bg-white/90 text-stone-700 text-[11px] tracking-wide px-2.5 py-1 border border-stone-200">制作実績サンプル</span>
             <div class="port-overlay absolute inset-0 bg-stone-900/30 flex items-center justify-center">
               <span class="bg-white text-stone-900 text-sm px-6 py-2.5 translate-y-2 group-hover:translate-y-0 transition-transform duration-300">サイトを見る →</span>
             </div>
@@ -556,10 +429,11 @@
 
         <!-- sekotuin -->
         <a href="https://ytaka0509.github.io/sekotuin-sample/" target="_blank" rel="noopener"
-           class="portfolio-card card-lift reveal group bg-white block">
+           class="portfolio-card card-lift reveal group bg-white block relative">
           <div class="relative h-60 overflow-hidden bg-stone-100">
             <img src="https://image.thum.io/get/width/640/crop/450/https://ytaka0509.github.io/sekotuin-sample/"
                  alt="ひだまり接骨院" class="thumb absolute inset-0 w-full h-full object-cover object-top" loading="lazy"/>
+            <span class="badge-tag absolute top-3 left-3 bg-white/90 text-stone-700 text-[11px] tracking-wide px-2.5 py-1 border border-stone-200">制作実績サンプル</span>
             <div class="port-overlay absolute inset-0 bg-stone-900/30 flex items-center justify-center">
               <span class="bg-white text-stone-900 text-sm px-6 py-2.5 translate-y-2 group-hover:translate-y-0 transition-transform duration-300">サイトを見る →</span>
             </div>
@@ -575,73 +449,6 @@
     </div>
   </section>
 
-  <div class="divider"></div>
-
-  <!-- PROCESS -->
-  <section id="process" class="py-28 px-6 bg-stone-50">
-    <div class="max-w-5xl mx-auto">
-      <div class="mb-20 reveal">
-        <div class="section-label">
-          <div class="section-label-line"></div>
-          <p class="text-stone-400 text-xs tracking-[0.3em] uppercase">Process</p>
-        </div>
-        <h2 class="serif text-3xl sm:text-4xl mb-4">制作の流れ</h2>
-        <p class="text-stone-500 max-w-md leading-relaxed">お問い合わせから納品まで、透明性のある5ステップで進めます。</p>
-      </div>
-
-      <div class="border-t border-stone-200">
-
-        <div class="reveal flex items-start gap-8 py-7 border-b border-stone-200">
-          <span class="idx-num w-8 flex-shrink-0">01</span>
-          <div>
-            <h3 class="serif text-stone-900 font-medium mb-1.5">ヒアリング</h3>
-            <p class="text-stone-500 text-sm leading-relaxed">ご要望・事業内容・ターゲット・競合サイトをオンラインでヒアリングします。</p>
-          </div>
-        </div>
-
-        <div class="reveal flex items-start gap-8 py-7 border-b border-stone-200">
-          <span class="idx-num w-8 flex-shrink-0">02</span>
-          <div>
-            <h3 class="serif text-stone-900 font-medium mb-1.5">企画・設計</h3>
-            <p class="text-stone-500 text-sm leading-relaxed">ページ構成・機能要件を整理し、サイトマップ・ワイヤーフレームを共有します。</p>
-          </div>
-        </div>
-
-        <div class="reveal flex items-start gap-8 py-7 border-b border-stone-200">
-          <span class="idx-num w-8 flex-shrink-0">03</span>
-          <div>
-            <h3 class="serif text-stone-900 font-medium mb-1.5">デザイン・制作</h3>
-            <p class="text-stone-500 text-sm leading-relaxed">デザイン確認後、本実装を進めます。修正は最大3回まで無料対応。</p>
-          </div>
-        </div>
-
-        <div class="reveal flex items-start gap-8 py-7 border-b border-stone-200">
-          <span class="idx-num w-8 flex-shrink-0">04</span>
-          <div>
-            <h3 class="serif text-stone-900 font-medium mb-1.5">テスト・修正</h3>
-            <p class="text-stone-500 text-sm leading-relaxed">PC・スマホ・タブレットで動作確認を行い、フィードバックを反映します。</p>
-          </div>
-        </div>
-
-        <div class="reveal flex items-start gap-8 py-7">
-          <span class="idx-num w-8 flex-shrink-0">05</span>
-          <div>
-            <h3 class="serif text-stone-900 font-medium mb-1.5">納品・サポート</h3>
-            <p class="text-stone-500 text-sm leading-relaxed">ファイル納品または公開代行。納品後1ヶ月間は無料でサポートします。</p>
-          </div>
-        </div>
-
-      </div>
-
-      <div class="mt-10 flex items-center gap-2.5 text-stone-500 text-xs">
-        <svg class="w-3.5 h-3.5 text-stone-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
-        </svg>
-        納期目安：LP基本 1〜2週間 / LP＋機能 2〜4週間 / フルカスタム 要相談
-      </div>
-    </div>
-  </section>
-
   <!-- CONTACT -->
   <section id="contact" class="py-28 px-6">
     <div class="max-w-2xl mx-auto">
@@ -651,8 +458,8 @@
       </div>
       <h2 class="serif text-3xl sm:text-4xl mb-5 reveal">まずはお気軽に</h2>
       <p class="text-stone-500 mb-14 leading-relaxed reveal">
-        「LPを作りたいけど機能も欲しい」「予算感を確認したい」など、<br class="hidden sm:block" />
-        どんな段階のご相談でも大歓迎です。
+        「実績についてもっと詳しく知りたい」「制作を依頼したい」など、<br class="hidden sm:block" />
+        どんな内容でもお気軽にご連絡ください。
       </p>
 
       <div class="flex flex-col sm:flex-row gap-px bg-stone-200 border border-stone-200 mb-8 reveal">
@@ -661,7 +468,7 @@
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
           </svg>
           <div class="text-left">
-            <div class="text-xs text-stone-400 mb-1 tracking-wide">メールで相談（無料）</div>
+            <div class="text-xs text-stone-400 mb-1 tracking-wide">メールでのお問い合わせ</div>
             <div class="text-sm text-stone-900">お問い合わせはこちら</div>
           </div>
         </div>
@@ -686,7 +493,7 @@
           <svg class="w-4 h-4 text-stone-400 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
           </svg>
-          <span class="leading-relaxed">初回の無料相談（30分〜）で、ご要望の確認と大まかなお見積りをお伝えします。通常2営業日以内にご返信いたします。</span>
+          <span class="leading-relaxed">通常2営業日以内にご返信いたします。どんな段階のご相談でもお気軽にどうぞ。</span>
         </div>
       </div>
     </div>
@@ -700,9 +507,7 @@
       </a>
       <nav class="flex flex-wrap justify-center gap-7 text-sm text-stone-400">
         <a href="#services"  class="hover:text-stone-900 transition-colors">できること</a>
-        <a href="#pricing"   class="hover:text-stone-900 transition-colors">料金</a>
         <a href="#portfolio" class="hover:text-stone-900 transition-colors">制作実績</a>
-        <a href="#process"   class="hover:text-stone-900 transition-colors">制作の流れ</a>
         <a href="#contact"   class="hover:text-stone-900 transition-colors">お問い合わせ</a>
       </nav>
       <span class="text-stone-400 text-xs">&copy; 2025 Web制作ポートフォリオ</span>
